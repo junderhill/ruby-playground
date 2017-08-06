@@ -1,7 +1,9 @@
 require 'json'
+require_relative 'baseObject'
 
 module Domain
   class Post
+    extend BaseObject
 
     attr_accessor :id
    
@@ -10,11 +12,8 @@ module Domain
     end
 
     def self.from_json(json)
-      deserialized = JSON.parse(json)
-      if deserialized.empty?
-        raise ArgumentError
-      end
-      Post.new(deserialized['id'])
+      postHash = super json
+      Post.new(postHash['id'])
     end
 
   end

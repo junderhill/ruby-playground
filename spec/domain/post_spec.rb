@@ -22,5 +22,11 @@ describe Post, 'from_json' do
         post = Post.from_json(jsonString)
       }.to raise_error(ArgumentError)
     end
+    it 'should throw an error' do
+      jsonString = ''
+      expect{
+        post = Post.from_json(jsonString)
+      }.to raise_error(ArgumentError)
+    end
   end
 end
