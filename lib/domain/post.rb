@@ -11,7 +11,9 @@ module Domain
 
     def self.from_json(json)
       deserialized = JSON.parse(json)
-      puts deserialized
+      if deserialized.empty?
+        raise ArgumentError
+      end
       Post.new(deserialized['id'])
     end
 
